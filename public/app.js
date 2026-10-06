@@ -17,7 +17,7 @@ function updateCatalog() {
     card.classList.toggle('is-hidden', !matches);
     if (matches) visible++;
   });
-  if (resultCount) resultCount.textContent = `${visible} ${visible === 1 ? 'produto encontrado' : 'produtos encontrados'}`;
+  if (resultCount) resultCount.textContent = query || activeFilter !== 'todos' ? `${visible} ${visible === 1 ? 'produto encontrado' : 'produtos encontrados'}` : 'Explore nossa seleção';
   if (emptyMessage) emptyMessage.hidden = visible !== 0;
 }
 filterButtons.forEach(button => button.addEventListener('click', () => {
@@ -62,4 +62,22 @@ document.querySelector('#share-storefront')?.addEventListener('click', async () 
   if (!toast.textContent) return;
   toast.classList.add('show');
   window.setTimeout(() => toast.classList.remove('show'), 2800);
+});
+
+const grid = document.querySelector('.product-grid');
+const orderSelect = document.querySelector('#product-order');
+orderSelect?.addEventListener('change', () => {
+  const ordered = orderSelect.value === 'az' ? [...productCards].sort((a,b) => a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent, 'pt-BR')) : productCards;
+  ordered.forEach(card => grid.append(card));
+});
+document.querySelector('#catalog-reset')?.addEventListener('click', () => {
+  searchInput.value = '';
+  activeFilter = 'todos';
+  filterButtons.forEach(button => {
+    const selected = button.dataset.filter === 'todos';
+    button.classList.toggle('is-active', selected);
+    button.setAttribute('aria-pressed', String(selected));
+  });
+  updateCatalog();
+  searchInput.focus();
 });

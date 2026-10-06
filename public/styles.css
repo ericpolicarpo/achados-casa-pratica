@@ -226,3 +226,18 @@ main { max-width: 1200px; margin: auto; padding: 0 28px; }
 .image-fallback { display: grid; place-items: center; height: 100%; padding: 30px; color: var(--accent-dark); text-align: center; font-weight: 700; }
 .product-image-wrap img[hidden] { display: none; }
 @media (max-width: 600px) { .top-nav { gap: 12px; } .site-header { flex-wrap: wrap; } .top-nav a { font-size: 12px; } }
+
+/* Vitrine focada em utilidade, sem contadores ou ranking visual. */
+.intro-cta {display:inline-block;margin-top:18px;padding:12px 18px;background:var(--accent-dark);color:#fff;border-radius:10px;font-weight:700;text-decoration:none;}
+.intro .affiliate-note {font-size:12px;color:var(--muted);max-width:640px;margin-top:14px;}
+.catalog-controls {display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:0 0 22px;font-size:13px;}
+.catalog-controls select,.catalog-controls button {font:inherit;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);padding:10px 12px;min-height:44px;}
+.catalog-controls button {cursor:pointer;margin-left:auto;}
+.store-faq {margin:35px 0;padding:26px;border:1px solid var(--line);border-radius:16px;background:#fff;}
+.store-faq h2 {margin:0 0 16px;font-family:'Playfair Display',Georgia,serif;}
+.store-faq details {padding:14px 0;border-top:1px solid var(--line);}
+.store-faq summary {cursor:pointer;font-weight:700;}
+.store-faq p {color:var(--muted);line-height:1.65;max-width:850px;}
+#catalog-empty {padding:22px;background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:20px;}
+:is(button,select,a):focus-visible {outline:3px solid var(--accent);outline-offset:3px;}
+@media(max-width:600px){.catalog-controls button{margin-left:0;width:100%;}.store-faq{padding:20px;}.intro .affiliate-note{max-width:none;}}
