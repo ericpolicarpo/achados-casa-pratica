@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://achadoscasapratica.netlify.app/sitemap.xml
+Sitemap: https://achadoscasapratica.netlify.app/feed.xml

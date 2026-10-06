@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Guias | Achados Casa Prática</title>
+    <link>https://achadoscasapratica.netlify.app/blog/</link>
+    <description>Guias úteis sobre organização da casa e escolha de ferramentas, com transparência de afiliados.</description>
+    <language>pt-br</language>
+    <lastBuildDate>Sat, 03 Oct 2026 10:13:00 -0300</lastBuildDate>
+    <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
+    <atom:link href="https://achadoscasapratica.netlify.app/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Potes para despensa pequena: como escolher sem comprar a mais</title>
+      <link>https://achadoscasapratica.netlify.app/blog/potes-despensa-pequena.html</link>
+      <guid isPermaLink="true">https://achadoscasapratica.netlify.app/blog/potes-despensa-pequena.html</guid>
+      <description>Meça a prateleira, compare vidro e plástico e escolha potes pela rotina. Guia prático com critérios de compra e links para conferir os anúncios.</description>
+      <pubDate>Sat, 03 Oct 2026 10:13:00 -0300</pubDate>
+    </item>
+    <item>
+      <title>Como organizar banheiro pequeno sem encher a bancada</title>
+      <link>https://achadoscasapratica.netlify.app/blog/organizar-banheiro-pequeno.html</link>
+      <guid isPermaLink="true">https://achadoscasapratica.netlify.app/blog/organizar-banheiro-pequeno.html</guid>
+      <description>Um passo a passo para separar itens diários, medir a bancada e escolher organizadores e tapetes sem atrapalhar a circulação do banheiro.</description>
+      <pubDate>Sat, 03 Oct 2026 10:13:00 -0300</pubDate>
+    </item>
+    <item>
+      <title>Soquetes com catraca ou de impacto: o que conferir</title>
+      <link>https://achadoscasapratica.netlify.app/blog/soquetes-catraca-ou-impacto.html</link>
+      <guid isPermaLink="true">https://achadoscasapratica.netlify.app/blog/soquetes-catraca-ou-impacto.html</guid>
+      <description>Entenda a diferença entre soquetes para uso manual e de impacto. Confira encaixe, medidas e compatibilidade antes de escolher um jogo.</description>
+      <pubDate>Sat, 03 Oct 2026 10:13:00 -0300</pubDate>
+    </item>
+  </channel>
+</rss>
