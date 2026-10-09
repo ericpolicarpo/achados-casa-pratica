@@ -48,7 +48,7 @@ document.querySelectorAll('.product-card img').forEach(img => {
 
 const toast = document.querySelector('.toast');
 document.querySelector('#share-storefront')?.addEventListener('click', async () => {
-  const shareData = {title:'Achados Casa Prática',text:'Achados úteis para casa e rotina, disponíveis no Mercado Livre:',url:'https://achadoscasapratica.netlify.app/'};
+  const shareData = {title:'Achados Casa Prática',text:'Achados úteis para casa e rotina, disponíveis no Mercado Livre e na Shopee:',url:'https://achadoscasapratica.netlify.app/'};
   try {
     if (navigator.share) await navigator.share(shareData);
     else {
