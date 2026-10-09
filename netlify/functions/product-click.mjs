@@ -6,7 +6,7 @@ export default async request=>{
  if(request.headers.get('origin')!=='https://achadoscasapratica.netlify.app')return new Response(null,{status:403,headers});
  const text=await request.text();if(text.length>1024)return new Response(null,{status:413,headers});
  let data;try{data=JSON.parse(text);}catch{return new Response(null,{status:400,headers});}
- if(!products.has(data.product)||!channels.has(data.channel)||typeof data.page!=='string'||!/^\/(?:produtos\/[a-z0-9-]+\/|selecoes\/[a-z0-9-]+\/|produto-[a-z0-9-]+\.html)?$/.test(data.page))return new Response(null,{status:400,headers});
+ if(!products.has(data.product)||!channels.has(data.channel)||typeof data.page!=='string'||!/^\/(?:produtos\/[a-z0-9-]+\/|selecoes\/[a-z0-9-]+\/|produto-[a-z0-9-]+(?:\.html)?)?$/.test(data.page))return new Response(null,{status:400,headers});
  console.log(JSON.stringify({event:'product_click',product:data.product,channel:data.channel,page:data.page,time:new Date().toISOString()}));
  return new Response(null,{status:204,headers});
 };
