@@ -39,7 +39,7 @@ document.querySelectorAll('.product-card img').forEach(img => {
     if (!link || link.querySelector('.image-fallback')) return;
     const message = document.createElement('span');
     message.className = 'image-fallback';
-    message.textContent = 'Veja a imagem no Mercado Livre ↗';
+    message.textContent = link.href.includes('shopee') ? 'Veja as fotos na Shopee ↗' : 'Veja as fotos no Mercado Livre ↗';
     link.append(message);
   };
   img.addEventListener('error', showFallback, {once:true});
@@ -80,4 +80,14 @@ document.querySelector('#catalog-reset')?.addEventListener('click', () => {
   });
   updateCatalog();
   searchInput.focus();
+});
+
+// Atalhos usam os mesmos filtros da vitrine.
+document.querySelectorAll('[data-category-shortcut]').forEach(button => {
+  button.addEventListener('click', () => {
+    if (searchInput) searchInput.value = '';
+    const filter = [...filterButtons].find(item => item.dataset.filter === button.dataset.categoryShortcut);
+    filter?.click();
+    document.querySelector('#achados')?.scrollIntoView({behavior:'smooth',block:'start'});
+  });
 });
