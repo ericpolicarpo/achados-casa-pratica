@@ -1,4 +1,5 @@
 [build]
+  command = "node scripts/rebrand.cjs"
   publish = "public"
 
 [[redirects]]
