@@ -32,3 +32,27 @@ console.log(`Achouê: identidade aplicada em ${changed} arquivos.`);
 if (!fs.readFileSync(cssPath, 'utf8').includes('/* Achoue catalog first */')) {
   fs.appendFileSync(cssPath, '\n/* Achoue catalog first */\n.storefront .catalog{padding-top:28px}.catalog-heading h1{margin:0;font-family:"Playfair Display",serif;font-size:clamp(26px,3vw,40px);line-height:1.15}\n');
 }
+const pricesPath = path.join(__dirname, 'prices.json');
+if (fs.existsSync(pricesPath)) {
+  const prices = JSON.parse(fs.readFileSync(pricesPath, 'utf8'));
+  const homePath = path.join(root, 'index.html');
+  let home = fs.readFileSync(homePath, 'utf8');
+  for (const item of prices) {
+    const block = `<div class="product-price-block"><p class="product-price">R$ ${item.value}${item.coupon ? ' <span>com cupom</span>' : ''}</p><p class="product-price-note">Preço anunciado em ${item.checked}. Variações e condições no anúncio.</p></div>`;
+    home = home.replace(new RegExp(`(<article class="product-card" id="${item.id}"[\\s\\S]*?)(</article>)`), (_, card, end) => {
+      card = card.replace(/<div class="product-price-block">[\s\S]*?<\/div>/g, '');
+      return card.replace('<p class="product-platform">', `${block}<p class="product-platform">`) + end;
+    });
+    const detailPath = path.join(root, item.path.endsWith('/') ? item.path + 'index.html' : item.path);
+    if (fs.existsSync(detailPath)) {
+      let detail = fs.readFileSync(detailPath, 'utf8').replace(/<div class="product-price-block">[\s\S]*?<\/div>/g, '');
+      detail = detail.replace(/(<p class="detail-intro">[\s\S]*?<\/p>)/, `$1${block}`);
+      fs.writeFileSync(detailPath, detail);
+    }
+  }
+  fs.writeFileSync(homePath, home);
+  if (!fs.readFileSync(cssPath, 'utf8').includes('/* Achoue prices */')) {
+    fs.appendFileSync(cssPath, '\n/* Achoue prices */\n.product-price-block{margin:12px 0}.product-content .product-price,.product-price{font-size:23px;font-weight:700;color:#a64427;margin:0}.product-price span{font-size:12px;font-weight:500}.product-content .product-price-note,.product-price-note{font-size:11px;line-height:1.4;color:#746e65;margin:4px 0 0}\n');
+  }
+  console.log(`Achouê: ${prices.length} preços consultados aplicados.`);
+}
