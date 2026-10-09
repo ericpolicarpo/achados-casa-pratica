@@ -11,6 +11,11 @@ function visit(dir) {
     let text = old.replaceAll('Achados Casa Prática', 'Achouê')
       .replaceAll('<strong>Achados</strong><em>Casa Prática</em>', '<strong>Achouê</strong><em>Moda, casa e achados</em>')
       .replace(/<span class="brand-mark"[^>]*>⌂<\/span>/g, '<img class="achoue-brand-icon" src="/achoue-perfil.png" alt="" width="40" height="40">');
+    if (entry.name === 'index.html' && dir === root) {
+      text = text.replace(/\s*<section class="intro"[\s\S]*?<\/section>\s*/, '\n');
+      text = text.replace(/\s*<p class="store-disclosure">[\s\S]*?<\/p>\s*/, '\n');
+      text = text.replace('<h2 id="achados-title">Encontre o seu favorito</h2>', '<h1 id="achados-title">Encontre o seu favorito</h1>');
+    }
     if (entry.name === 'index.html' && dir === root && !text.includes('class="brand-socials"')) {
       text = text.replace('</footer>', '<nav class="brand-socials" aria-label="Redes sociais"><a href="https://www.tiktok.com/@achoue_" target="_blank" rel="noopener">TikTok @achoue_ ↗</a><a href="https://www.youtube.com/channel/UCce2ZJnnAQTamLO4wP4jTfQ" target="_blank" rel="noopener">YouTube Achouê ↗</a></nav></footer>');
     }
@@ -24,3 +29,6 @@ if (!css.includes('/* Achoue identity */')) {
   fs.appendFileSync(cssPath, '\n/* Achoue identity */\n.achoue-brand-icon{width:40px;height:40px;border-radius:50%;object-fit:cover}.brand-name strong{font-size:24px}.brand-name em{font-size:11px;font-style:normal}.brand-socials{display:flex;gap:18px;flex-wrap:wrap}.brand-socials a{font-size:13px}\n');
 }
 console.log(`Achouê: identidade aplicada em ${changed} arquivos.`);
+if (!fs.readFileSync(cssPath, 'utf8').includes('/* Achoue catalog first */')) {
+  fs.appendFileSync(cssPath, '\n/* Achoue catalog first */\n.storefront .catalog{padding-top:28px}.catalog-heading h1{margin:0;font-family:"Playfair Display",serif;font-size:clamp(26px,3vw,40px);line-height:1.15}\n');
+}
